@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 var bodyParser = require('body-parser');
 var cors = require('cors');
+const localDb = require('./db/localDb')('user');
 const router = require('./routes')
 
 const app = express();
@@ -18,6 +19,50 @@ app.use((err, req, res, next) => {
 });
 
 app.use('/', router);
+
+app.post('/user', async (req, res) => {
+    try {
+        const userId = await localDb.create(req.body);
+        res.status(201).json({ id: userId });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.delete('/user/:id', async (req, res) => {
+    try {
+        const success = await localDb.delete(req.params.id);
+        if (success) {
+            res.status(200).send();
+        } else {
+            res.status(404).send();
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.put('/user/:id', async (req, res) => {
+    try {
+        const success = await localDb.update({ ...req.body, id: req.params.id });
+        if (success) {
+            res.status(200).send();
+        } else {
+            res.status(404).send();
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get('/user', async (req, res) => {
+    try {
+        const users = await localDb.filter();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
 
 app.listen(port, ()=>{
     console.log(`The server is listen on PORT: ${port}`);

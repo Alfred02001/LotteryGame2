@@ -15,12 +15,12 @@
             <form action="#" id="form">
                 <h2>Datos</h2>
                 <input type="text" id="nombre" placeholder="Escriba su nombre"/>
-                <input type="number" id="numero1" class="lottery-input" pattern="\d*" min="1" max="100" />
-                <input type="number" id="numero2" class="lottery-input" pattern="\d*" min="1" max="100" />  
-                <input type="number" id="numero3" class="lottery-input" pattern="\d*" min="1" max="100" />
-                <input type="number" id="numero4" class="lottery-input" pattern="\d*" min="1" max="100" />
-                <input type="number" id="numero5" class="lottery-input" pattern="\d*" min="1" max="100" />
-                <input type="number" id="numero6" class="lottery-input" pattern="\d*" min="1" max="100" />
+                <input type="number" id="numero1" class="lottery-input" pattern="\d*" min="1" max="100" placeholder="Escriba un Numero"/>
+                <input type="number" id="numero2" class="lottery-input" pattern="\d*" min="1" max="100" placeholder="Escriba un Numero"/>  
+                <input type="number" id="numero3" class="lottery-input" pattern="\d*" min="1" max="100" placeholder="Escriba un Numero"/>
+                <input type="number" id="numero4" class="lottery-input" pattern="\d*" min="1" max="100" placeholder="Escriba un Numero"/>
+                <input type="number" id="numero5" class="lottery-input" pattern="\d*" min="1" max="100" placeholder="Escriba un Numero"/>
+                <input type="number" id="numero6" class="lottery-input" pattern="\d*" min="1" max="100" placeholder="Escriba un Numero"/>
                 <button type="submit" onclick="agregarJugador(event)">Agregar</button>
             </form>
         </div>
@@ -30,8 +30,7 @@
             <h2>Loteria</h2>
             <label>Numero ganador!</label>
             <label id="numeroGanador"></label>
-            <button id="btnJugar" type="button" onclick="jugar()" class="BJugar">Jugar</button>
-            
+            <button id="btnJugar" type="button" onclick="jugar()" class="BJugar">Jugar</button>  
         </div>
 
         <div class="njugados" style="margin-top: 20px;">
@@ -50,7 +49,6 @@
         </div>
     </div>
     <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/play.js"></script>
 </body>
 </html>
 

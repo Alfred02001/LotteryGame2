@@ -2,19 +2,22 @@ const service= require("../services/userService");
 
 class userController{
     getAll(req, res){
-        return res.json(service.filter());
+        (async ()=>{
+            const result = await service.filter();
+            res.json(result);
+        })();
     }
 
     create(req, res){
-        return res.json(service.create(req.body));
+        res.json(service.create(req.body));
     }
     
     delete(req, res){
-        return res.json(service.delete(req.query.id));
+        res.json(service.delete(req.query.id));
     }
 
     update(req, res){
-        return res.json(service.update(req.body));
+        res.json(service.update(req.body));
     }
 }
 
